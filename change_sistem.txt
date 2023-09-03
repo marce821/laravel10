@@ -1,0 +1,350 @@
+/*
+SQLyog Community v13.1.5  (32 bit)
+MySQL - 5.7.24 : Database - change_sistem
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`change_sistem` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `change_sistem`;
+
+/*Table structure for table `accounts_payable` */
+
+DROP TABLE IF EXISTS `accounts_payable`;
+
+CREATE TABLE `accounts_payable` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `registration_date` timestamp NULL DEFAULT NULL,
+  `amount` decimal(17,2) NOT NULL,
+  `amortization` decimal(17,2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `accounts_payable` */
+
+LOCK TABLES `accounts_payable` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `accounts_receivable` */
+
+DROP TABLE IF EXISTS `accounts_receivable`;
+
+CREATE TABLE `accounts_receivable` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `registration_date` timestamp NULL DEFAULT NULL,
+  `amount` decimal(17,2) NOT NULL,
+  `amortization` decimal(17,2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `accounts_receivable` */
+
+LOCK TABLES `accounts_receivable` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `customer_transaction` */
+
+DROP TABLE IF EXISTS `customer_transaction`;
+
+CREATE TABLE `customer_transaction` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) DEFAULT NULL,
+  `deposit_date` timestamp NULL DEFAULT NULL,
+  `responsive_id` bigint(20) DEFAULT NULL,
+  `payment_type_id` bigint(20) DEFAULT NULL,
+  `amount` decimal(17,2) DEFAULT NULL,
+  `rate` decimal(17,2) DEFAULT NULL,
+  `destination_bank_id` bigint(20) DEFAULT NULL,
+  `average_rate` decimal(15,2) DEFAULT NULL,
+  `average_gain` decimal(15,2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `customer_transaction` */
+
+LOCK TABLES `customer_transaction` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `daily_totals` */
+
+DROP TABLE IF EXISTS `daily_totals`;
+
+CREATE TABLE `daily_totals` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `payment_type_id` bigint(20) NOT NULL,
+  `start_bank` decimal(17,2) NOT NULL,
+  `debit_payment` decimal(17,2) DEFAULT NULL,
+  `entry_money` decimal(17,2) NOT NULL,
+  `bank_closing` decimal(17,2) DEFAULT NULL,
+  `current_money` decimal(17,2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `daily_totals` */
+
+LOCK TABLES `daily_totals` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `destination_bank` */
+
+DROP TABLE IF EXISTS `destination_bank`;
+
+CREATE TABLE `destination_bank` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `destination_bank` */
+
+LOCK TABLES `destination_bank` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `exchange_rate` */
+
+DROP TABLE IF EXISTS `exchange_rate`;
+
+CREATE TABLE `exchange_rate` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  `value` decimal(17,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `exchange_rate` */
+
+LOCK TABLES `exchange_rate` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `failed_jobs` */
+
+DROP TABLE IF EXISTS `failed_jobs`;
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `failed_jobs` */
+
+LOCK TABLES `failed_jobs` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `migrations` */
+
+DROP TABLE IF EXISTS `migrations`;
+
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `migrations` */
+
+LOCK TABLES `migrations` WRITE;
+
+insert  into `migrations`(`id`,`migration`,`batch`) values 
+(1,'2014_10_12_000000_create_users_table',1),
+(2,'2014_10_12_100000_create_password_reset_tokens_table',1),
+(3,'2019_08_19_000000_create_failed_jobs_table',1),
+(4,'2019_12_14_000001_create_personal_access_tokens_table',1);
+
+UNLOCK TABLES;
+
+/*Table structure for table `password_reset_tokens` */
+
+DROP TABLE IF EXISTS `password_reset_tokens`;
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `password_reset_tokens` */
+
+LOCK TABLES `password_reset_tokens` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `payment_type` */
+
+DROP TABLE IF EXISTS `payment_type`;
+
+CREATE TABLE `payment_type` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `payment_type` */
+
+LOCK TABLES `payment_type` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `personal_access_tokens` */
+
+DROP TABLE IF EXISTS `personal_access_tokens`;
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `personal_access_tokens` */
+
+LOCK TABLES `personal_access_tokens` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `purchase_rate` */
+
+DROP TABLE IF EXISTS `purchase_rate`;
+
+CREATE TABLE `purchase_rate` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `value` decimal(17,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `purchase_rate` */
+
+LOCK TABLES `purchase_rate` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `purchase_supplier` */
+
+DROP TABLE IF EXISTS `purchase_supplier`;
+
+CREATE TABLE `purchase_supplier` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `dolar` decimal(17,2) DEFAULT NULL,
+  `bolivars` decimal(17,2) DEFAULT NULL,
+  `paid` decimal(17,2) DEFAULT NULL,
+  `available_bolivars` decimal(17,2) DEFAULT NULL,
+  `supplier` varchar(250) DEFAULT NULL,
+  `destination_bank_id` bigint(20) DEFAULT NULL,
+  `beneficiary` varchar(250) DEFAULT NULL,
+  `pay` decimal(17,2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `purchase_supplier` */
+
+LOCK TABLES `purchase_supplier` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `responsible` */
+
+DROP TABLE IF EXISTS `responsible`;
+
+CREATE TABLE `responsible` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `num_doc` varchar(50) DEFAULT NULL,
+  `name` varchar(150) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `responsible` */
+
+LOCK TABLES `responsible` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `users` */
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_username_unique` (`username`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `users` */
+
+LOCK TABLES `users` WRITE;
+
+insert  into `users`(`id`,`name`,`username`,`email`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`) values 
+(4,'marcia','marcia','marcia@stomabags.com',NULL,'$2y$10$JRLD7shcLeU3VnJEHRkHUeB7cAOUnQpWAJclSMOD0Wdd/qsqXy6a6',NULL,'2023-09-02 23:07:56','2023-09-02 23:07:56'),
+(5,'sterling','marce821','marce821@hotmail.com',NULL,'$2y$10$wuihxiOvtTZFUpXs1aSIZuwy2S1JTBy.Oyn4EWXIPEpzHKQL/l/ZC',NULL,'2023-09-02 23:25:33','2023-09-02 23:25:33'),
+(6,'reto','reto','reto@reto.com',NULL,'$2y$10$shBWOdQU0D56TZgGy6coIOpzxNqVOAaV/f9u1B7hxfrmtBNr6F7YW',NULL,'2023-09-03 02:30:42','2023-09-03 02:30:42');
+
+UNLOCK TABLES;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
