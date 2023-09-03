@@ -1,0 +1,27 @@
+
+tutorial: https://www.youtube.com/watch?v=LPrjJ29BQxI
+
+paso1
+composer create-project laravel/laravel [nombre de tu proyecto]
+
+paso2
+configuracion archivo .dev
+
+paso2 migration tablas
+ php artisan migrate
+
+paso3
+se edita el modelo User.php agregando lo siguiente para encriptar el password
+
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
+	
+y se agrega el username en:
+
+    protected $fillable = [
+        'name',
+        'username',
+        'email',
+        'password',
+    ];	
