@@ -86,6 +86,6 @@ class ResponsibleController extends Controller
     {
         $responsible = Responsible::find($id);
         $responsible->delete();
-        return redirect ("responsible");
+        return redirect ("/responsible");
     }
 }

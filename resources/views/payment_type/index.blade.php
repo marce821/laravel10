@@ -3,37 +3,32 @@
 
 @section('content')
 
-    {{-- <h1 class="container">Responsible</h1> --}}
 
     @auth
 
             <div class="container py-4">
-                <h2>Listado de Responsables</h2>
+                <h2>Listado de Cuentas</h2>
 
-                <a href="{{ url('responsible/create') }}" class="btn btn-primary btn-sm" > Nuevo Responsable </a>
+                <a href="{{ url('payment_type/create') }}" class="btn btn-primary btn-sm" > Nueva Cuenta </a>
 
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>DNI</th>
                             <th>Name</th>
-                            <th>Notas</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @csrf
-                        @foreach($responsible as $responsible)
+                        @foreach($payment_type as $payment_type)
                         <tr>
-                            <td>{{ $responsible->id }}</td>
-                            <td>{{ $responsible->num_doc }}</td>
-                            <td>{{ $responsible->name }}</td>
-                            <td>{{ $responsible->nota }}</td>
-                            <td><a href="{{ url('responsible/'.$responsible->id.'/edit') }}" class="btn btn-warning btn-sm">Editar</a></td>
+                            <td>{{ $payment_type->id }}</td>
+                            <td>{{ $payment_type->name }}</td>
+                            <td><a href="{{ url('payment_type/'.$payment_type->id.'/edit') }}" class="btn btn-warning btn-sm">Editar</a></td>
                             <td>
-                                <form action="{{ url('responsible/'.$responsible->id ) }}" method="post">
+                                <form action="{{ url('payment_type/'.$payment_type->id ) }}" method="post">
                                     @method("DELETE")
                                     @csrf
                                     <button type="sumit" class="btn btn-danger btn-sm">Eliminar</button>

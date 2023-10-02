@@ -29,7 +29,7 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tablas Base</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/responsible">Responsables</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="/payment_type">Tipo Cuentas</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>

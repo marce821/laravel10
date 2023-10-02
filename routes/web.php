@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ResponsibleController;
-
+use App\Http\Controllers\PaymentTypeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +36,6 @@ Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::resource('/responsible', ResponsibleController::class);
 
- Route::resource('/responsible', ResponsibleController::class);
+Route::resource('/payment_type', PaymentTypeController::class);
 
 
