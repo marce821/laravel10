@@ -24,6 +24,7 @@ class ResponsibleRequest extends FormRequest
         return [
             'name' => 'required|min:3',
             'num_doc' => 'nullable',
+            'notas' => 'nullable',
         ];
     }
 }

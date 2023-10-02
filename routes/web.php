@@ -18,9 +18,7 @@ use App\Http\Controllers\ResponsibleController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/auth', function () { return view('login');});
 
 Route::get('/register', [RegisterController::class, 'show']);
 
@@ -34,4 +32,10 @@ Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);
 
-Route::get('/responsible', [ResponsibleController::class, 'index']);
+//Route::get('/responsible', [ResponsibleController::class, 'index']);
+
+Route::resource('/responsible', ResponsibleController::class);
+
+ Route::resource('/responsible', ResponsibleController::class);
+
+
