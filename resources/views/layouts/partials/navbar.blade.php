@@ -30,8 +30,9 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/responsible">Responsables</a></li>
               <li><a class="dropdown-item" href="/payment_type">Tipo Cuentas</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="/destination_bank">Banco Destino</a></li>
+              <li><a class="dropdown-item" href="/purchase_rate">Tasa Compra</a></li>
+              <li><a class="dropdown-item" href="/exchange_rate">Tasas Cambio</a></li>
             </ul>
           </li>
           <li class="nav-item">

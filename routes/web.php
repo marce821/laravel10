@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ResponsibleController;
 use App\Http\Controllers\PaymentTypeController;
+use App\Http\Controllers\DestinationBankController;
+use App\Http\Controllers\PurchaseRateController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,4 +40,6 @@ Route::resource('/responsible', ResponsibleController::class);
 
 Route::resource('/payment_type', PaymentTypeController::class);
 
+Route::resource('/destination_bank', DestinationBankController::class);
 
+Route::resource('/purchase_rate', PurchaseRateController::class);
