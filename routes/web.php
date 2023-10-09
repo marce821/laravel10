@@ -9,6 +9,10 @@ use App\Http\Controllers\ResponsibleController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\DestinationBankController;
 use App\Http\Controllers\PurchaseRateController;
+use App\Http\Controllers\ExchangeRateController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,3 +47,7 @@ Route::resource('/payment_type', PaymentTypeController::class);
 Route::resource('/destination_bank', DestinationBankController::class);
 
 Route::resource('/purchase_rate', PurchaseRateController::class);
+
+Route::resource('/exchange_rate', ExchangeRateController::class);
+
+

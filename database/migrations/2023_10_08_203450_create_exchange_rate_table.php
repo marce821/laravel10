@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('destination_bank', function (Blueprint $table) {
-           $table->id();
+        Schema::create('exchange_rate', function (Blueprint $table) {
+            $table->id();
             $table->string('name')->unique();
+            $table->string('value');
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('destination_bank');
+        Schema::dropIfExists('exchange_rate');
     }
 };
